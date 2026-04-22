@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-function VanDetails() {
+import { Link } from "react-router-dom";
+function VanDetails(rentAt) {
+    console.log(rentAt)
   const [van, setVan] = useState(null);
-  const params = useParams();
+  const { id } = useParams();
+
   useEffect(() => {
     const getData = async function () {
       try {
-        let vanData = await fetch(`/api/vans/${params.id}`);
+        let vanData = await fetch(`/api/vans/${id}`);
         vanData = await vanData.json();
         setVan(vanData.vans);
-        console.log(vanData);
       } catch (err) {
         console.log(error);
       }
     };
     getData();
-  }, []);
+  }, []);Ï
   return (
     <div className="van-detail-container">
       {van ? (
@@ -27,7 +29,9 @@ function VanDetails() {
             <span>${van.price}</span>/day
           </p>
           <p>{van.description}</p>
-          <button className="link-button">Rent this van</button>
+          <Link to={`/rent/${van.id}`}>
+            <button className="link-button">Rent this van</button>
+          </Link>
         </div>
       ) : (
         <h2>Loading...</h2>
