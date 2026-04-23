@@ -17,7 +17,7 @@ function VanDetails(rentAt) {
       }
     };
     getData();
-  }, []);Ï
+  }, []);
   return (
     <div className="van-detail-container">
       {van ? (

@@ -8,6 +8,9 @@ function Nav() {
       </Link>
       <ul className="flex place-content-between gap-4">
         <li>
+          <Link to={"/host"}>Host</Link>
+        </li>
+        <li>
           <Link to={"/About"}>About</Link>
         </li>
         <li>
